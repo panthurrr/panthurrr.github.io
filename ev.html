@@ -2,15 +2,26 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+    <style type="text/css">
     * {
       box-sizing: border-box;
     }
-
     body {
       margin: 0;
-      font-family: Arial;
+      font-family: 'cheltenham_condensedbold';
+      src: url('assets/webfonts/cheltenham_condensed_bold-webfont.woff2') format('woff2'),
+           url('assets/webfonts/cheltenham_condensed_bold-webfont.woff') format('woff');
+      font-weight: normal;
+      font-style: italic;
       font-size: 17px;
+    }
+
+    @font-face {
+    font-family: 'cheltenham_condensedbold';
+    src: url('assets/webfonts/cheltenham_condensed_bold-webfont.woff2') format('woff2'),
+         url('assets/webfonts/cheltenham_condensed_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
     }
 
     #myVideo {
@@ -48,30 +59,29 @@
   </head>
   
   <body>
-
-  <video autoplay muted loop id="myVideo">
-    <source src="sunset.mp4" type="video/mp4">
+  <video autoplay muted id="myVideo">
+    <source src="assets/video/phat.mp4" type="video/mp4">
     Your browser does not support HTML5 video.
   </video>
 
+  <audio autoplay loop id="audio">
+    <source src="assets/sound/music.mp3" type = "audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
+
   <div class="content">
-    <h1>Heading</h1>
-    <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei. Id qui nemore latine molestiae, ad mutat oblique delicatissimi pro.</p>
-    <button id="myBtn" onclick="myFunction()">Pause</button>
+    <h1>SEE YOU SPACE COWBOY...</h1>
   </div>
 
   <script>
   var video = document.getElementById("myVideo");
   var btn = document.getElementById("myBtn");
 
-  function myFunction() {
-    if (video.paused) {
-      video.play();
-      btn.innerHTML = "Pause";
-    } else {
-      video.pause();
-      btn.innerHTML = "Play";
-    }
+  document.addEventListener('click', musicPlay);
+
+  function musicPlay() {
+    document.getElementById('audio').play();
+    document.removeEventListener('click', musicPlay);
   }
   </script>
 
